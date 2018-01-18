@@ -1,0 +1,19 @@
+# coding=utf-8
+
+import paramiko
+
+ip = '192.168.0.1'
+port = 22
+username = 'admin'
+password = 'lax123456'
+
+command = 'ls -al'
+
+ssh = paramiko.SSHClient()
+ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+ssh.connect(ip, port, username, password)
+stdin, stdout, stderr = ssh.exec_command()
+
+for std in stdout.readlines():
+    print std
+ssh.close()
