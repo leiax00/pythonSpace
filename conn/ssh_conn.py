@@ -7,7 +7,7 @@ port = 22
 username = 'leiax00'
 password = 'admin'
 
-command = 'ls -al'
+command = 'pwd'
 
 ssh = paramiko.SSHClient()
 ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())

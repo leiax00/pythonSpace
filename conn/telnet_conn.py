@@ -2,10 +2,10 @@
 import socket
 import telnetlib
 
-host = '127.0.0.1'
+host = '192.168.0.104'
 port = 0
-username = 'admin'
-password = 'lax123456'
+username = 'leiax00'
+password = ''
 timeout = 5000
 socket
 finish = ':~$ '
