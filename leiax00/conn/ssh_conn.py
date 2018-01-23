@@ -12,9 +12,9 @@ command = 'pwd'
 ssh = paramiko.SSHClient()
 ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 ssh.connect(ip, port, username, password)
-print '连接成功!!!'
+print('连接成功!!!')
 stdin, stdout, stderr = ssh.exec_command(command)
 
 for std in stdout.readlines():
-    print std
+    print(std)
 ssh.close()
