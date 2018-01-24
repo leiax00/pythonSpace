@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+print(r'c:\nax\rcxvf''\\')
+
 # 二三行会多空格
 print('''line1
          line2
@@ -33,3 +35,9 @@ print(s3)
 print(s4)
 
 print('ABC'.encode('ascii'))
+
+print('---------------------------------------------')
+print(len('abc'))
+print(len('abc'.encode('utf-8')))
+# print(len('中文'))
+print(len('中文'.encode('utf-8')))
