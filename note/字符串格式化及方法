@@ -1,0 +1,37 @@
+1. 字符串格式化
+    'price of eggs: $%d' % 45    >>>'price of eggs: $45'
+
+    转换说明符可以包含字段宽度和精度, 可以使用 * 作为字段宽度或者精度
+        字段宽度是转换后的值所保留的最小字符个数, 精度是小数个数;
+        '%10.3f' % pi           >>>'     3.142'
+    #   0 表示填充0
+        '%010.3f' % pi          >>>'000003.142'
+    #   - 号表示左对齐
+        '%-10.3f' % pi          >>>'3.142     '
+    #   ' '号在附属前加 -号,但与正数对齐
+        '% 5d' % 10             >>>'   10'
+        '% 5d' % -10            >>>'  -10'
+    #   + 号在数字前面都加上正负号
+        '%+5d' % 10             >>>'  +10'
+        '%+5d' % -10            >>>'  -10'
+        print('%.*s' % (7, 'hello world!!!'))  >>>'hello w'
+
+2. 字符串常用方法
+    字符串常量:
+        string.digits               >>>包含数字0-9的字符串
+        string.letters              >>>包含所有字母(大小写)的字符串
+        string.lowercase            >>>包含所有小写字母的字符串
+        string.printable            >>>包含所有可打印字符的字符串
+        string.punctuation          >>>包含所有标点的字符串
+        string.uppercase            >>>包含所有大写字母的字符串
+    方法:
+        str.find(childStr)          >>>返回子串所在位置的最左端索引,未找到返回-1;可设置起始终止点
+        'a'.join(list)              >>>通过'a'将list中的各个元素连接起来: 元素1a元素2a元素3a....
+        str.lower()                 >>>转小写
+        str.title()                 >>>字符串中每个单词首字母大写    等同: string.capwords(str)
+        str.replace(str1, str2)     >>>将str中的str1替换成str2,并返回该串儿
+        str.split(str1)             >>>将str按字符str1拆分
+        str.strip(str1)             >>>去除str两端包含在str1中的字符,默认去除空格
+        str.translate(str.maketrans(str1, str2))    >>>将str中str1中的字符替换成str2中的对应字符
+
+

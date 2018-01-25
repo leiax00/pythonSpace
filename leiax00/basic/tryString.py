@@ -1,6 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+
+str1 = 'asdffhghg'
+table = str1.maketrans('ad', 'wx')
+print(str1.translate(table))
+
+print('%.*s' % (7, 'hello world!!!'))
+
 print(r'c:\nax\rcxvf''\\')
 
 # 二三行会多空格
