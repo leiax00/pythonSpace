@@ -1,10 +1,10 @@
 # _*_ coding: utf-8 _*_
 
 
-def yang_hui():
+def yang_hui(lines):
     line = 0
     line_value = [1]
-    while line < 10:
+    while line < lines:
         yield line_value
         a = [1]
         a.extend([v + line_value[k + 1] for k, v in enumerate(line_value) if k != (len(line_value) - 1)])
@@ -16,7 +16,7 @@ def yang_hui():
 if __name__ == '__main__':
     n = 0
     results = []
-    for t in yang_hui():
+    for t in yang_hui(10):
         print(t)
         results.append(t)
         n = n + 1
