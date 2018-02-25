@@ -1,0 +1,22 @@
+#!/usr/bin/env python3
+# _*_ coding: utf-8 _*_
+import functools
+
+
+def out_wrapper(my_str):
+    def in_wrapper(func):
+        @functools.wraps(func)
+        def inner_wrapper(*args, **kw):
+            print('%s %s %s' % (func.__name__, my_str, '2018-02-25 15:24'))
+            return func(*args, **kw)
+        return inner_wrapper
+    return in_wrapper
+
+
+@out_wrapper('execute in')
+def my_test(a, b):
+    print('%s is %s.' % (a, b))
+
+
+if __name__ == '__main__':
+    my_test('safd', 'dsffsdg')
