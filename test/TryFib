@@ -33,8 +33,42 @@ class Fib(object):
                 a, b = b, a + b
             return L
 
+    def __setitem__(self, key, value):
+        return {key: value}
+
+
+class Fib1(object):
+    f1 = 33
+
+    def __init__(self):
+        self.a, self.b = 0, 1  # 初始化两个计数器a，b
+
+    def __iter__(self):
+        return self  # 实例本身就是迭代对象，故返回自己
+
+    def __next__(self):
+        self.a, self.b = self.b, self.a + self.b  # 计算下一个值
+        if self.a > 100:  # 退出循环的条件
+            raise StopIteration()
+        return self.a  # 返回下一个值
+
+    def __getitem__(self, str1):
+        return self.__dict__[str1]
+
+    def __setitem__(self, key, value):
+        self.__dict__[key] = value
+
+    def __delitem__(self, key):
+        self.__dict__.pop(key)
+
 
 fib = Fib()
+fib1 = Fib1()
 if __name__ == '__main__':
+    fib1.dic1 = 3
+    print(fib1.dic1)
+    print(fib1.f1)
+    print(fib1.__dict__)
+
     print(fib[0:5])
     # print([n for n in fib])
