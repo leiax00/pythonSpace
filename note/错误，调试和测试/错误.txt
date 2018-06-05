@@ -1,0 +1,28 @@
+参考：basic/errorandexception/myErrorCheck.py
+1. python的异常捕获结构
+    try:
+        逻辑xxxx
+    except 异常类型 as e:
+        异常处理
+    else:
+        print('no error!')  # 没有进入except走的逻辑
+    finally:
+        print('finally...')
+    print('END')
+
+2. 错误的基类： BaseException
+    Python所有的错误都是从BaseException类派生的，常见的错误类型和继承关系看这里：
+        https://docs.python.org/3/library/exceptions.html#exception-hierarchy
+
+3. 错误打印：
+    logging.exception(e)
+        通过配置，logging还可以把错误记录到日志文件里，方便事后排查。
+
+4. 抛出错误： raise FooError('xxx')
+
+5. 异常的定义
+    class MyError(Exception):
+        def __init__(self, error_code, error_msg):
+            Exception.__init__(self)
+            self.error_code = error_code
+            self.error_msg = error_msg

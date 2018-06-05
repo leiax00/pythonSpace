@@ -1,0 +1,19 @@
+1. 断言 -- assert
+    def foo(s):
+        n = int(s)
+        assert n != 0, 'n is zero!'  # 后面文字为断言失败时错误AssertionError中的详细信息；
+        return 10 / n
+
+    def main():
+        foo('0')
+
+2. 关闭断言 -- 启动Python解释器时可以用-O参数来关闭assert
+    $ python -O err.py  # 在命令行的时候启动python时的输入方式，ide中应该可以配置参数
+    关闭后，你可以把所有的assert语句当成pass来看。
+
+3. logging -- logging不会抛出错误，而且可以输出到文件
+    import logging
+    logging.basicConfig(level=logging.INFO)  # 配置日志打印级别，不写的话不会打印下面的info日志（日志级别：debug, info,warning, error）
+    logging.info('n = %d' % n)
+
+    logging的另一个好处是通过简单的配置，一条语句可以同时输出到不同的地方，比如console和文件。参考：basic/errorandexception/loggingCheck.py
