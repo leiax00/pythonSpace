@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<root name = "root">
+    <level2 name = "level2" order = "1">
+        <name>leiax00</name>
+        <sex>true</sex>
+    </level2>
+    <global>false</global>
+</root>
