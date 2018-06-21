@@ -15,7 +15,7 @@ CONFIG = {
     'db_config': {
         'db_type': DB_TYPE['mysql'],
         'ip': r'localhost',
-        'port': 3305,
+        'port': 3306,
         'database': r'ssm',
         'username': r'root',
         'passwd': r'root',

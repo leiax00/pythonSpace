@@ -1,0 +1,11 @@
+{
+  "pro01": {
+    "change_config": [
+      {
+        "target_label": "org.leiax00.pro02", 
+        "target_value": "xxxxx"
+      }
+    ], 
+    "target_file": "pro.properties"
+  }
+}

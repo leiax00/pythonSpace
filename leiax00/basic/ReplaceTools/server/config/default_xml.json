@@ -1,0 +1,17 @@
+{
+  "xm01": {
+    "program_name": "xml方案1",
+    "change_config": [
+      {
+        "target_label": "name",
+        "target_value": "666666",
+        "key": "xxxxx"
+      }
+    ],
+    "replace": {
+      "<!--global>": "<global>",
+      "</global-->": "</global>"
+    },
+    "target_file": "xm.xml"
+  }
+}

@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <root name = "root">
-    <level2 name = "level2" order = "1">
+    <level2 name = "xxxxxxx" order = "1">
         <name>leiax00</name>
         <sex>true</sex>
     </level2>
-    <global>false</global>
+    <level2 name = "yyyyyy" order = "1">
+        <name>leiax00</name>
+        <sex>true</sex>
+        <level3 name = "yyyyyy">
+            <name>leiax011111</name>
+        </level3>
+    </level2>
+    <!--global>false</global-->
 </root>

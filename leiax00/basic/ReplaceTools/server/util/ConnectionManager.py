@@ -1,13 +1,12 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
 import logging
+from cx_Oracle import OperationalError as o_ex
 
 import cx_Oracle
 import pymysql
-
-from cx_Oracle import OperationalError as o_ex
 from pymysql import OperationalError as m_ex
-from basic.ReplaceTools.server.bean.ConnectionFindError import ConnectionFindError
+
 from basic.ReplaceTools.start_config import CONFIG, DB_TYPE
 
 
@@ -33,9 +32,6 @@ class ConnectionManager:
             logging.exception(o_ex)
         except m_ex:
             logging.exception(m_ex)
-        finally:
-            if db is not None:
-                db.close()
         return None
 
 
@@ -49,3 +45,4 @@ if __name__ == '__main__':
     else:
         cursor1.execute('select * from user')
         print(cursor1.fetchone())
+        cursor1.close()

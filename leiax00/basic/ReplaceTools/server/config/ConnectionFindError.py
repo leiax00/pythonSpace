@@ -1,4 +1,5 @@
-# __*__ coding: utf-* __*__
+#!/usr/bin/python
+# -*- coding: UTF-8 -*-
 
 
 class ConnectionFindError(Exception):

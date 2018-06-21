@@ -1,0 +1,17 @@
+{
+  "prog01": {
+    "program_name": "方案1",
+    "items": [
+      "pro01",
+      "db01",
+      "xm01"
+    ]
+  },
+  "prog01": {
+    "program_name": "方案2",
+    "items": [
+      "pro01",
+      "xm01"
+    ]
+  }
+}

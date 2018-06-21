@@ -1,0 +1,12 @@
+{
+  "db01": [
+    {
+      "program_name": "db方案1",
+      "user": "root",
+      "sql": [
+        "UPDATE `user` SET userAge = 777 WHERE id = 3",
+        "UPDATE `user` SET userAge = 777 WHERE id = 2"
+      ]
+    }
+  ]
+}
