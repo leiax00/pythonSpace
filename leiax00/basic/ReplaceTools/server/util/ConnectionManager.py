@@ -18,21 +18,20 @@ class ConnectionManager:
     def constructor_url(self):
         return '%(username)s/%(passwd)s@%(ip)s:%(port)i/%(database)s' % self.config
 
-    def get_cursor(self):
-        db = None
+    def get_connection(self):
+        conn = None
         try:
             if self.config['db_type'] == DB_TYPE['mysql']:
-                db = pymysql.connect(host=self.config['ip'], port=self.config['port'], user=self.config['username'],
+                conn = pymysql.connect(host=self.config['ip'], port=self.config['port'], user=self.config['username'],
                                      password=self.config['passwd'],
                                      database=self.config['database'])
             elif self.config['db_type'] == DB_TYPE['oracle']:
-                db = cx_Oracle.connect(self.url)
-            return db.cursor()
+                conn = cx_Oracle.connect(self.url)
         except o_ex:
             logging.exception(o_ex)
         except m_ex:
             logging.exception(m_ex)
-        return None
+        return conn
 
 
 manager = ConnectionManager(CONFIG['db_config'])
@@ -43,6 +42,6 @@ if __name__ == '__main__':
         logging.warn('cursor is None, can not execute sql...')
         # raise ConnectionFindError('Fail to find a connection.')
     else:
-        cursor1.execute('select * from user')
-        print(cursor1.fetchone())
+        cursor1.execute('UPDATE `user` SET userAge = 666 WHERE id = 2')
+        # print(cursor1.fetchone())
         cursor1.close()

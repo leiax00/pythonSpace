@@ -1,12 +1,17 @@
 {
-  "db01": [
-    {
-      "program_name": "db方案1",
-      "user": "root",
-      "sql": [
-        "UPDATE `user` SET userAge = 777 WHERE id = 3",
-        "UPDATE `user` SET userAge = 777 WHERE id = 2"
-      ]
-    }
-  ]
+  "db001": {
+    "program_name": "db方案1",
+    "db_config": {
+      "db_type": "mysql",
+      "ip": "localhost",
+      "port": 3306,
+      "database": "ssm",
+      "username": "root",
+      "passwd": "root"
+    },
+    "sql": [
+      "UPDATE `user` SET userAge = 777 WHERE id = 3",
+      "UPDATE `user` SET userAge = 666 WHERE id = 2"
+    ]
+  }
 }
