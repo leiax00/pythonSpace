@@ -28,3 +28,25 @@ logging.basicConfig(level=logging.INFO,
                     datefmt='%Y-%m-%d %H:%M:%S',
                     filename=LOGGING_PATH,
                     filemode='w')
+
+
+def print_box(left_margin, box_width, box_high):
+    high = 0
+    print(' ' * left_margin + '+' + '-' * (box_width - 2) + '+')
+    while high < box_high - 2:
+        if 2 * high == box_high - 5:
+            s = '欢迎使用本工具'
+            space_num = ((box_width - len(s)) / 2 + 3)
+            print(' ' * left_margin + '|' + ' ' * space_num + s + ' ' * space_num + '|')
+        elif 2 * high == box_high + 1:
+            s = '@不存在的界面'
+            space_num = box_width - len(s) -3
+            print(' ' * left_margin + '|' + ' ' * space_num + s + ' ' * 7 + '|')
+        elif 2 * high == box_high + 3:
+            s = 'by 雷翱翔 & 杨正勇'
+            space_num = box_width - len(s) + 2
+            print(' ' * left_margin + '|' + ' ' * space_num + s + ' ' * 2 + '|')
+        else:
+            print(' ' * left_margin + '|' + ' ' * (box_width - 2) + '|')
+        high = high + 1
+    print(' ' * left_margin + '+' + '-' * (box_width - 2) + '+')

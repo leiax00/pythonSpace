@@ -22,6 +22,10 @@ class ProgramPerformer:
             command = re.match(r'.*_(\w*)\.json', item['serialize_file']).groups()[0]
             PROCESSORS[command].execute(item)
 
+    def set_program(self, program_key):
+        if program_key is not None:
+            self.program = dao.assemble_program(program_key)
+
 
 performer = ProgramPerformer()
 if __name__ == '__main__':

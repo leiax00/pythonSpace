@@ -15,7 +15,6 @@ class Processor(object):
 
 class DbProcessor(Processor):
     def execute(self, change_entity):
-        print('DbProcessor: %s' % change_entity)
         manager = ConnectionManager(change_entity['db_config'])
         conn = manager.get_connection()
         if conn is not None:
@@ -28,14 +27,13 @@ class DbProcessor(Processor):
                 conn.rollback()
                 logging.warn('db Processor execute failure....')
             else:
-                logging.info('db Processor execute finished....')
+                logging.info('db Processor execute success....')
             finally:
                 conn.close()
 
 
 class ProProcessor(Processor):
     def execute(self, change_entity):
-        print('ProProcessor: %s' % change_entity)
         targets = [target for target in change_entity['change_config']]
         target_file = os.path.join(CONFIG['root_path'], change_entity['target_file'])
         self.__modify_item(target_file, targets)
