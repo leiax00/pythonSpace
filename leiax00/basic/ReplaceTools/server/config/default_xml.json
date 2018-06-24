@@ -1,17 +1,31 @@
 {
   "xm001": {
     "program_name": "xml方案1",
-    "change_config": [
+    "change_child": [
       {
-        "target_label": "name",
-        "target_value": "666666",
-        "key": "xxxxx"
+        "target_tag": "level2/level3/name",
+        "target_value": "213242",
+        "key": "name",
+        "key_value": "yyyyyy"
       }
     ],
-    "replace": {
-      "<!--global>": "<global>",
-      "</global-->": "</global>"
-    },
+    "add_child": [
+      {
+        "key": "name",
+        "key_value": "qqqqq",
+        "target_tag": "level2/level3",
+        "new_node": [
+          {
+            "tag": "global",
+            "attrs": {
+              "name": "leiax01",
+              "order": "11"
+            },
+            "text_value": "add new...."
+          }
+        ]
+      }
+    ],
     "target_file": "xm.xml"
   }
 }

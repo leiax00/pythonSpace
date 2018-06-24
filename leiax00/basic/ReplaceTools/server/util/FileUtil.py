@@ -39,7 +39,6 @@ def dump_json_file(json_obj):
     codecs库不会抛出异常
     :param json_obj: 新增的一个独立方案，一个dict，包括配置，和序列化的文件路径（key: serialize_file）
         结构： ｛key:{配置, 'serialize_file': 序列化路径｝
-    :param file_path: json固化到的文件
     """
     for k, v in json_obj.items():
         serialize_file = v.pop('serialize_file')
@@ -62,9 +61,6 @@ def parse_xml():
 @check_file(0)
 def parse_properties(file_path):
     pro_dict = {}
-    if not os.path.isfile(file_path):
-        print "properties file not exist!"
-        return False
     try:
         pro_file = open(file_path, "r")
         for line in pro_file.readlines():
