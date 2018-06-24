@@ -5,7 +5,7 @@ import os
 
 from basic.ReplaceTools.server.util.ConnectionManager import ConnectionManager
 from basic.ReplaceTools.server.util.XmUtil import *
-from basic.ReplaceTools.start_config import CONFIG
+from basic.ReplaceTools.config.start_config import CONFIG
 
 
 class Processor(object):

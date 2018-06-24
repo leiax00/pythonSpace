@@ -7,7 +7,7 @@ import cx_Oracle
 import pymysql
 from pymysql import OperationalError as m_ex
 
-from basic.ReplaceTools.start_config import CONFIG, DB_TYPE
+from basic.ReplaceTools.config.start_config import CONFIG, DB_TYPE
 
 
 class ConnectionManager:

@@ -7,7 +7,7 @@ import logging
 import os
 import re
 
-from basic.ReplaceTools.start_config import PROJECT_ROOT
+from basic.ReplaceTools.config.start_config import PROJECT_ROOT
 
 
 def check_file(index):

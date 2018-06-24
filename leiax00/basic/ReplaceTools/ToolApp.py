@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
 from basic.ReplaceTools.server.service.ProgramPerformer import performer
-from basic.ReplaceTools.start_config import *
+from basic.ReplaceTools.config.start_config import *
 
 
 class ToolMain:
