@@ -66,12 +66,12 @@ def parse_properties(file_path):
         for line in pro_file.readlines():
             line = line.strip(' \t\n')
             if line and not line.startswith("#"):
-                print line
+                print(line)
                 temp = line.split("=")
                 temp[0] = temp[0].strip(' \t\n')
                 temp[1] = temp[1].strip(' \t\n')
                 pro_dict[temp[0]] = temp[1]
-    except Exception, e:
+    except Exception as e:
         logging.exception('Fail to load properties', e)
     else:
         pro_file.close()

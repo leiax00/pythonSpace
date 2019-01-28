@@ -54,7 +54,7 @@ class ProProcessor(Processor):
             write_f = open(target_file, "w")
             print('write lines: %s' % lines)
             write_f.writelines(lines)
-        except Exception, e:
+        except Exception as e:
             logging.exception(('Fail to load properties: %s', e))
             raise e
         else:
@@ -85,7 +85,7 @@ class XmlProcessor(Processor):
                 result_nodes = self.__get_target_nodes(tree, change)
                 change_node_text(result_nodes, change['target_value'])
             write_xml(tree, self.file_path)
-        except IOError, e:
+        except IOError as e:
             logging.exception(e)
             return False
         else:
