@@ -1,5 +1,5 @@
 *Settings*							
-Library	../../leiax00/basic/tryGenerator.py						
+Library	../../leiax00/basic/datatype/tryGenerator.py						
 							
 *Keywords*							
 杨辉三角	[Arguments]	${lines}					
