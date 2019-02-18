@@ -60,6 +60,7 @@ def log_common(conn, name, message, severity=logging.INFO, timeout=5):
             log_recent(pipe, name, message, severity, pipe)
             return
         except redis.exceptions.WatchError:
+            print('start_key has changed....')
             continue
 
 
