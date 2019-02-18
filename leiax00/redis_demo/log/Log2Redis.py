@@ -49,7 +49,9 @@ def log_common(conn, name, message, severity=logging.INFO, timeout=5):
             existing = pipe.get(start_key)
             pipe.multi()
             # 每小时更新一个key
-            if existing and float(existing) < hour_start:
+            if existing is None:
+                pipe.set(start_key, hour_start)
+            elif float(existing) < hour_start:
                 pipe.rename(destination, destination + ':last')
                 pipe.rename(start_key, destination + ':pstart')
                 pipe.set(start_key, hour_start)
