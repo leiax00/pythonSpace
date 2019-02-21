@@ -3,7 +3,11 @@ import time
 
 from redis_demo.RedisClient import redis_conn
 
-PRECISION = [1, 5, 60, 5 * 60, 60 * 60, 5 * 60 * 60, 24 * 60 * 60]
+ONE_MINUTE = 60
+
+ONE_HOUR = 60 * 60
+
+PRECISION = [1, 5, ONE_MINUTE, 5 * ONE_MINUTE, ONE_HOUR, 5 * ONE_HOUR, 24 * ONE_HOUR]
 
 
 def update_counter(conn=redis_conn, name='', count=1, now=None):
