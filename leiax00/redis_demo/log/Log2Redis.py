@@ -1,4 +1,5 @@
 # coding: utf-8
+import bisect
 import logging
 import time
 from datetime import datetime
@@ -62,6 +63,49 @@ def log_common(conn, name, message, severity=logging.INFO, timeout=5):
         except redis.exceptions.WatchError:
             print('start_key has changed....')
             continue
+
+
+SAMPLE_COUNT = 1
+
+
+def clean_counters(conn):
+    pipe = conn.pipeline(True)
+    passes = 0
+    while True:
+        start = time.time()
+        index = 0
+        while index < conn.zcard('know:'):
+            hash = conn.zrange('known:', index, index)
+            index += 1
+            if not hash:
+                break
+            hash = hash[0]
+            prec = int(hash.partition(':')[0])
+            bprec = int(prec // 60) or 1
+            if passes % bprec:
+                continue
+            hkey = 'count:' + hash
+            cutoff = time.time() - SAMPLE_COUNT * prec
+            samples = map(int, conn.hkeys(hkey))
+            samples.sort()
+            remove = bisect.bisect_right(samples, cutoff)
+            if remove:
+                conn.hdel(hkey, *samples[:remove])
+                if remove == len(samples):
+                    try:
+                        pipe.watch(hkey)
+                        if not pipe.hlen(hkey):
+                            pipe.multi()
+                            pipe.zrem('known:', hash)
+                            pipe.execute()
+                            index -= 1
+                        else:
+                            pipe.unwatch()
+                    except redis.exceptions.WatchError:
+                        pass
+        passes += 1
+        duration = min(int(time.time() - start) + 1, 60)
+        time.sleep(max(60-duration, 1))
 
 
 if __name__ == '__main__':
