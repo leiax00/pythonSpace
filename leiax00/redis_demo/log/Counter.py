@@ -1,7 +1,7 @@
 # coding: utf-8
 import time
 
-from redis_demo.RedisClient import redis_conn
+from redis_demo import redis_client
 
 ONE_MINUTE = 60
 
@@ -10,7 +10,7 @@ ONE_HOUR = 60 * 60
 PRECISION = [1, 5, ONE_MINUTE, 5 * ONE_MINUTE, ONE_HOUR, 5 * ONE_HOUR, 24 * ONE_HOUR]
 
 
-def update_counter(conn=redis_conn, name='', count=1, now=None):
+def update_counter(conn=redis_client.conn, name='', count=1, now=None):
     now = now or time.time()
     pipe = conn.pipeline()
     for perc in PRECISION:
@@ -34,5 +34,5 @@ def get_counter(conn, name, precision):
 if __name__ == '__main__':
     name = 'leiax00'
     update_counter(name=name)
-    return_v = get_counter(redis_conn, name, 5)
+    return_v = get_counter(redis_client.conn, name, 5)
     print(return_v)

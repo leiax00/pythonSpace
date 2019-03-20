@@ -6,7 +6,7 @@ from datetime import datetime
 
 import redis
 
-from redis_demo.RedisClient import redis_conn
+from redis_demo.redis_client import conn
 
 SEVERITY = {
     logging.DEBUG: 'debug',
@@ -86,7 +86,7 @@ def clean_counters(conn):
                 continue
             hkey = 'count:' + hash
             cutoff = time.time() - SAMPLE_COUNT * prec
-            samples = map(int, conn.hkeys(hkey))
+            samples: list = map(int, conn.hkeys(hkey))
             samples.sort()
             remove = bisect.bisect_right(samples, cutoff)
             if remove:
@@ -105,9 +105,9 @@ def clean_counters(conn):
                         pass
         passes += 1
         duration = min(int(time.time() - start) + 1, 60)
-        time.sleep(max(60-duration, 1))
+        time.sleep(max(60 - duration, 1))
 
 
 if __name__ == '__main__':
     # log_recent(redis_conn, 'name', 'message')
-    log_common(redis_conn, 'name', 'message')
+    log_common(conn, 'name', 'message')
