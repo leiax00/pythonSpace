@@ -2,6 +2,8 @@
 import time
 import uuid
 
+import redis
+
 
 def acquire_lock(conn, lock_name, acquire_timeout=10):
     """
@@ -18,8 +20,21 @@ def acquire_lock(conn, lock_name, acquire_timeout=10):
 
 
 def release_lock(conn, lock_name, locked):
-    if not locked:
-        conn.delete('lock:%s' % lock_name)
+    pipe = conn.pipeline(True)
+    name = 'lock:%s' % lock_name
+    while True:
+        try:
+            pipe.watch(name)
+            if pipe.get(name) == locked:
+                pipe.multi()
+                pipe.delete(name)
+                pipe.execute()
+                return True
+            pipe.unwatch()
+            break
+        except redis.exceptions.WatchError:
+            pass
+    return False
 
 
 def purchase_item_with_lock(conn, buyer_id, item_id, seller_id):
