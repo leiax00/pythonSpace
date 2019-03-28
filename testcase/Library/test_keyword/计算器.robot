@@ -1,5 +1,5 @@
 *** Settings ***
-Library           ../../leiax00/RF/tryyRF.py
+Resource          ../testcase所有依赖集合.robot
 
 *** Keywords ***
 加法

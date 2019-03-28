@@ -1,5 +1,5 @@
 *** Settings ***
-Resource          ../keyWord/计算器.robot
+Resource          ../Library/testcese所有keyword集合.robot
 
 *** Test Cases ***
 加法

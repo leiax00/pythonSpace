@@ -1,5 +1,5 @@
 *** Settings ***
-Library           ../../leiax00/basic/datatype/tryGenerator.py
+Resource          ../testcase所有依赖集合.robot
 
 *** Keywords ***
 杨辉三角
