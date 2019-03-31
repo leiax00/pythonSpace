@@ -1,5 +1,5 @@
 *** Settings ***
-Resource          ../Library/testcese所有keyword集合.robot
+Resource          ../../Library/testcese所有keyword集合.robot
 
 *** Test Cases ***
 字典测试
@@ -15,3 +15,8 @@ Resource          ../Library/testcese所有keyword集合.robot
     ${dict_1}    create dictionary    a=a    b=b
     ${dict_2}    create dictionary    b=b    a=a
     should be equal as dict    ${dict_1}    ${dict_2}
+
+测试分步调用python脚本
+    [Documentation]    运行用例需要带参数
+    ...    --pythonpath E:\work_space\pythonSpace\testcase\Library
+    分步调用测试
