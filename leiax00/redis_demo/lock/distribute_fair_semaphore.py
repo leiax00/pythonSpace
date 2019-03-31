@@ -4,6 +4,17 @@ import time
 import uuid
 
 from redis_demo import redis_client
+from redis_demo.lock import distributed_lock
+
+
+def acquire_semaphore_with_lock(sem_name, conn=redis_client, limit=5, timeout=10):
+    """ 消除竞争条件 """
+    identifier = distributed_lock.acquire_lock_with_timeout(conn, sem_name, acquire_timeout=.01)
+    if identifier:
+        try:
+            return acquire_fair_semaphore(conn, sem_name, limit, timeout)
+        finally:
+            release_fair_semaphore(conn, sem_name, identifier)
 
 
 def acquire_fair_semaphore(sem_name, conn=redis_client.conn, limit=5, timeout=10):
@@ -40,6 +51,13 @@ def acquire_fair_semaphore(sem_name, conn=redis_client.conn, limit=5, timeout=10
     return None, counter
 
 
+def refresh_fair_semaphore(sem_name, identifier, conn=redis_client.conn):
+    if conn.zadd(sem_name, {identifier: time.time()}):  # 如果field存在,则返回0更新score, 否则返回1
+        release_fair_semaphore(conn, sem_name, identifier)
+        return False
+    return True
+
+
 def release_fair_semaphore(sem_name, identifier, conn=redis_client.conn):
     pipeline = conn.pipeline(True)
     pipeline.zrem(sem_name, identifier)
@@ -58,4 +76,3 @@ if __name__ == '__main__':
     for i in range(0, 5):
         name = 'thread%d' % i
         threading.Thread(name='name', target=batch_execute, args=(name, 'fair_semaphore')).start()
-
