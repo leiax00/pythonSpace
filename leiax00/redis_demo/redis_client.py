@@ -5,7 +5,7 @@ import redis
 class CONFIG:
     HOST = 'localhost'
     PORT = '6379'
-    PASSWORD = None
+    PASSWORD = 'root'
 
 
 # 对于每一个Redis服务器，用户只需要创建一个conn对象
