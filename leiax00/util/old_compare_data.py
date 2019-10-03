@@ -17,7 +17,7 @@ def is_equal_for_dict(dict_1, dict_2):
 
 class CompareData:
     def __init__(self):
-        self.param = 'compare_data.py'
+        self.param = 'old_compare_data.py'
 
     def is_equal_for_list(self, list_1, list_2):
         """ 仅处理字段,列表,字符串,数字这几种类型 """
