@@ -23,7 +23,7 @@ class CList(list, Custom):
         for v in item:
             contains = False
             for v1 in self:
-                if v.__contains__(v1):
+                if v1.__contains__(v):
                     contains = True
                     break
             if not contains:
@@ -37,7 +37,7 @@ class CDict(dict, Custom):
             return False
         for k, v in item.items():
             contains = False
-            if self.get(k) is not None and v.__contains__(self[k]):
+            if self.get(k) is not None and self[k].__contains__(v):
                 contains = True
             if not contains:
                 return False
