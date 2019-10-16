@@ -10,3 +10,6 @@ robotframework
 robotframework-ride
 setuptools
 matplotlib
+psycopg2  # pg driver
+pymysql  # mysql driver
+SQLAlchemy  # orm
