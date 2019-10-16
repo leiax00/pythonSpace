@@ -5,7 +5,7 @@ import scrapy
 import scrapy.cmdline
 
 
-class BookSpider(scrapy.Spider):
+class Book1Spider(scrapy.Spider):
     name = 'books'
     start_urls = ['http://books.toscrape.com/']
 

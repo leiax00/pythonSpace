@@ -5,7 +5,7 @@ import re
 import scrapy.cmdline
 
 
-class BookSpider(scrapy.Spider):
+class Book2Spider(scrapy.Spider):
     name = 'books'
 
     def __init__(self):
